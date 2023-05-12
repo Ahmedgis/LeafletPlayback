@@ -6,7 +6,7 @@
     "Marius Bieliauskas <@recallfx>"
   ],
   "description": "This is a Leaflet plug-in that plays back points that have a time stamp synchronized to a clock.",
-  "homepage": "http://apps.geoforces.org/LeafletPlayback/",
+  "homepage": "https://apps.geoforces.org/LeafletPlayback/",
   "repository": {
     "type": "git",
     "url": "git@github.com:Ahmedgis/LeafletPlayback.git"

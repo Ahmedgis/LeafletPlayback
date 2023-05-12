@@ -7,4 +7,4 @@ COPY . .
 
 # production stage
 FROM nginx:alpine
-COPY --from=build-stage /apps/LeafletPlayback /usr/share/nginx/html
+COPY --from=build-stage /apps /usr/share/nginx/html
