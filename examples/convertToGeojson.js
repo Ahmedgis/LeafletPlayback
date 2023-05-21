@@ -1,5 +1,6 @@
 var fs = require('fs');
-var dir = 'd:/ISD/projects/Simulation/repos/LeafletPlayback/examples/geojson';
+var dir = '/home/admin/npm/repos/LeafletPlayback/examples/geojson';
+
 
 // fs.readdirSync('./geojson').forEach(function (file) {
 // fs.readdirSync(dir).forEach(function (file) {
@@ -7,6 +8,14 @@ var dir = 'd:/ISD/projects/Simulation/repos/LeafletPlayback/examples/geojson';
   // var geoloqi = require('./geojson/' + file);
   // var geoloqi = require(dir + '/' + file);
   var geoloqi = require(dir + '/' + 'new-route.js');
+  // var geoloqi = require(dir + '/' + 'new-route.geojson');
+
+var geoObject = JSON.parse(geoloqi);
+var features = [];
+
+features = geoObject.features;
+
+console.log(geoloqi);
 
   var geojson = {
     type: 'Feature',
