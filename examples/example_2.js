@@ -1,11 +1,12 @@
-$(function() {
+$(function () {
     // Setup leaflet map
     var map = new L.Map('map');
 
     var basemapLayer = new L.TileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png');
 
     // Center map and default zoom level
-    map.setView([44.61131534, -123.4726739], 9);
+    // map.setView([44.61131534, -123.4726739], 9);
+    map.setView([30.43725, 18.03433], 7);
 
     // Adds the background layer to the map
     map.addLayer(basemapLayer);
@@ -13,64 +14,65 @@ $(function() {
     // Colors for AwesomeMarkers
     var _colorIdx = 0,
         _colors = [
-          'orange',
-          'green',
-          'blue',
-          'purple',
-          'darkred',
-          'cadetblue',
-          'red',
-          'darkgreen',
-          'darkblue',
-          'darkpurple'
+            'orange',
+            'green',
+            'blue',
+            'purple',
+            'darkred',
+            'cadetblue',
+            'red',
+            'darkgreen',
+            'darkblue',
+            'darkpurple'
         ];
-        
+
     function _assignColor() {
-        return _colors[_colorIdx++%10];
+        return _colors[_colorIdx++ % 10];
     }
-    
+
     // =====================================================
     // =============== Playback ============================
     // =====================================================
 
     // Playback options
-    var playbackOptions = {        
+    var playbackOptions = {
         // layer and marker options
         layer: {
-            pointToLayer : function(featureData, latlng){
+            pointToLayer: function (featureData, latlng) {
                 var result = {};
-                
-                if (featureData && featureData.properties && featureData.properties.path_options){
+
+                if (featureData && featureData.properties && featureData.properties.path_options) {
                     result = featureData.properties.path_options;
                 }
-                
-                if (!result.radius){
+
+                if (!result.radius) {
                     result.radius = 5;
                 }
-                
+
                 return new L.CircleMarker(latlng, result);
             }
         },
-        
-        marker: function(){
+
+        marker: function () {
             return {
                 icon: L.AwesomeMarkers.icon({
                     prefix: 'fa',
-                    icon: 'bullseye', 
+                    icon: 'bullseye',
                     markerColor: _assignColor()
-                }) 
+                })
             };
-        }        
+        }
     };
-    
+
     // Initialize playback
-    var playback = new L.Playback(map, demoTracks, null, playbackOptions);
-    
+    // var playback = new L.Playback(map, demoTracks, null, playbackOptions);
+    var playback = new L.Playback(map, newRoute, null, playbackOptions);
+
     // Initialize custom control
     var control = new L.Playback.Control(playback);
     control.addTo(map);
-    
+
     // Add data
-    playback.addData(blueMountain);
-       
+    //playback.addData(blueMountain);
+
 });
