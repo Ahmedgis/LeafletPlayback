@@ -6,7 +6,7 @@ $(function () {
 
     // Center map and default zoom level
     // map.setView([44.61131534, -123.4726739], 9);
-    map.setView([30.43725, 18.03433], 7);
+    map.setView([19.373513, 30.397776], 7);
 
     // Adds the background layer to the map
     map.addLayer(basemapLayer);
@@ -73,6 +73,6 @@ $(function () {
     control.addTo(map);
 
     // Add data
-    //playback.addData(blueMountain);
+    // playback.addData(blueMountain);
 
 });
