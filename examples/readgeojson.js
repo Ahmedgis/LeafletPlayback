@@ -1,32 +1,50 @@
 var fs = require('fs');
 // var routeJson = require('/home/admin/npm/repos/LeafletPlayback/examples/testdata/new-route.json');
 
-var dir = '/home/admin/npm/repos/LeafletPlayback/examples/testdata';
-var dirOutput = '/home/admin/npm/repos/LeafletPlayback/examples/outputdata';
+//  Linux
+// var dir = '/home/admin/npm/repos/LeafletPlayback/examples/testdata';
+// var dirOutput = '/home/admin/npm/repos/LeafletPlayback/examples/outputdata';
+
+//  Windows
+var dir = 'D:/ISD/projects/Simulation/repos/LeafletPlayback/examples/testdata';
+var dirOutput = 'D:/ISD/projects/Simulation/repos/LeafletPlayback/examples/outputdata';
 
 fs.readdirSync(dir).forEach(function (file) {
 
     var geojsonOutput = {
         type: 'Feature',
-        bbox: [],
-        crs: {
-            type: '',
-            properties: {
-                name: ''
-            }
-        },
         geometry: {
             type: 'MultiPoint',
             coordinates: []
         },
         properties: {
+            title: 'newRoute',
+            path_options: { 'color': 'red' },
             time: [],
             speed: [],
             altitude: [],
             heading: [],
             horizontal_accuracy: [],
             vertical_accuracy: []
-        }
+        },
+        bbox: [
+            [
+                30.43725,
+                18.03433
+            ],
+            [
+                30.43725,
+                19.10038
+            ],
+            [
+                30.9876,
+                19.10038
+            ],
+            [
+                30.9876,
+                18.03433
+            ]
+        ]
     };
 
     var routeJson = require(dir + '/' + file);
@@ -36,11 +54,11 @@ fs.readdirSync(dir).forEach(function (file) {
     routePoints = routeJson.features;
     console.log('Route Points: ' + routePoints.length);
 
-    geojsonOutput.bbox = routeJson.bbox;
-    console.log('Route BBOX  : ' + routeJson.bbox);
+    //geojsonOutput.bbox = routeJson.bbox;
+    //console.log('Route BBOX  : ' + routeJson.bbox);
 
-    geojsonOutput.crs = routeJson.crs;
-    console.log('Route CRS   : ' + routeJson.crs.properties.name);
+    //geojsonOutput.crs = routeJson.crs;
+    //console.log('Route CRS   : ' + routeJson.crs.properties.name);
     // console.log('Route CRS: ' + JSON.stringify(routeJson.crs));
 
     for (var i = 0; i < routePoints.length; i++) {

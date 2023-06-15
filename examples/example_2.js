@@ -49,8 +49,18 @@ $(function () {
                     result.radius = 5;
                 }
 
+                if (!result.color) {
+                    result.color = 'blue';
+                }
+
                 return new L.CircleMarker(latlng, result);
-            }
+            },
+            tracksLayer: true,
+            playControl: true,
+            dateControl: true,
+            sliderControl: true,
+            orientIcons: true,
+            popups: true
         },
 
         marker: function () {
